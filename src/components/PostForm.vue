@@ -4,7 +4,7 @@
       Titulo: <input type="text" v-model="post.title"><br>
       Descripción: <input type="text" v-model="post.body"><br>
       Usuario: <input type="text" v-model="post.user"><br>
-      <button>Crear</button>
+      <button>Generar</button>
     </form>
   </div>
 </template>
