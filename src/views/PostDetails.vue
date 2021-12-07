@@ -1,13 +1,13 @@
 <template>
   <div>
-    <form @submit.prevent="handleUpdate">
+    <form @submit.prevent="updatePost()">
       Title: <input type="text" v-model="post.title"><br>
       Description: <br>
       <textarea name="#" id="" cols="30" rows="10" v-model="post.body"></textarea><br>
       User: <input type="text" v-model="post.user"><br>
       <button>Update</button>
     </form>
-    <button>Delete</button>
+    <button @click="deletePost()">Delete</button>
   </div>
 </template>
 
@@ -18,8 +18,7 @@ import { defineComponent } from 'vue'
 import Post from '@/interfaces/Post';
 
 //! SERVICES
-import {getById} from '@/services/postServices';
-import {update} from '@/services/postServices';
+import {getById, update, del} from '@/services/postServices';
 
 export default defineComponent({
   data() {
@@ -32,14 +31,18 @@ export default defineComponent({
       const post = await getById(id);
       this.post = post.data;
     },
-    async updatePost(id: number, post: Post){
-      const updatedPost = await update(id, post);
+    async updatePost(){
+      const updatedPost = await update(+this.$route.params.id, this.post);
       console.log(updatedPost);
-    },
-    handleUpdate(){
-      this.updatePost(+this.$route.params.id, this.post);
       this.$router.push({path: '/'});
-    }
+    },
+    async deletePost(){
+      const post = this.post; // Keep post obj to show it in case it's been deleted
+      if (await del(+this.$route.params.id)) {
+        console.log(post);
+        this.$router.push({path: '/'}); 
+      }
+    },
   },
   mounted() {
     this.getPost(+this.$route.params.id);

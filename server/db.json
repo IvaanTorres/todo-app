@@ -1,40 +1,10 @@
 {
   "posts": [
     {
-      "id": 1,
-      "title": "Heyy",
-      "body": "This is my first comment",
-      "user": "@Ivaan.torres"
-    },
-    {
-      "id": 2,
-      "title": "Second comment",
-      "body": "This is my second comment",
-      "user": "@Ivaan.torres"
-    },
-    {
-      "id": 3,
-      "title": "Holaaa",
-      "body": "This is my third comment",
-      "user": "@Ivaan.torres"
-    },
-    {
-      "title": "Cuarto comentario",
-      "body": "Esto es el cuarto comentario",
-      "user": "@ana.garcia",
-      "id": 4
-    },
-    {
       "title": "b wbwb",
       "body": "bowbo",
       "user": "bwv",
       "id": 5
-    },
-    {
-      "title": "wuovbouw",
-      "body": "ubouwbv",
-      "user": "ivaaan",
-      "id": 6
     }
   ]
 }
