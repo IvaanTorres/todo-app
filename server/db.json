@@ -2,7 +2,7 @@
   "posts": [
     {
       "id": 1,
-      "title": "First comment",
+      "title": "Heyy",
       "body": "This is my first comment",
       "user": "@Ivaan.torres"
     },
@@ -14,7 +14,7 @@
     },
     {
       "id": 3,
-      "title": "Third comment",
+      "title": "Holaaa",
       "body": "This is my third comment",
       "user": "@Ivaan.torres"
     },

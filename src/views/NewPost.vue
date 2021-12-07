@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>Nuevo post</h1>
-    <h2>Insertar nuevo post</h2>
+    <h1>New Post</h1>
+    <h2>Insert new post</h2>
     <new-post-form @getData="getData($event)" />
   </div>
 </template>
