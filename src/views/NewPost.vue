@@ -1,13 +1,13 @@
 <template>
   <div>
-    <h1>New Post</h1>
-    <h2>Insert new post</h2>
+    <h1 class="g--text-align-center">New Post</h1>
+    <!-- <h2 class="g--text-align-center">Insert new post</h2> -->
     <new-post-form @getData="getData($event)" />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent } from 'vue';
 
 //! COMPONENTS
 import newPostForm from '@/components/PostForm.vue';
@@ -16,7 +16,7 @@ import newPostForm from '@/components/PostForm.vue';
 import Post from '@/interfaces/Post';
 
 //! SERVICES
-import {create} from '@/services/postServices';
+import { create } from '@/services/postServices';
 
 export default defineComponent({
   name: 'New Post',
@@ -25,24 +25,19 @@ export default defineComponent({
   },
   data() {
     return {
-      data: {} as Post
-    }
+      data: {} as Post,
+    };
   },
   methods: {
-    getData(receivedData: Post){
+    getData(receivedData: Post) {
       this.data = receivedData;
       this.createPost();
-      this.$router.push({name: "Posts"});
+      this.$router.push({ name: 'Posts' });
     },
-    async createPost(){
+    async createPost() {
       const newPost = await create(this.data);
       return newPost;
-    }
+    },
   },
-})
+});
 </script>
-
-
-<style scoped>
-
-</style>

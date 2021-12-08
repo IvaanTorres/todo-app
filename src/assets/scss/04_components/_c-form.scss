@@ -1,0 +1,24 @@
+.c-form {
+  margin-top: 40px;
+  display: flex;
+  color: getColor('white', 5);
+  margin-bottom: 30px;
+
+  &__wrapper {
+    background-color: getColor('black', 1);
+    padding: 20px;
+    margin: auto;
+    min-width: 300px;
+  }
+  &__footer {
+    margin-top: 10px;
+    display: flex;
+  }
+  &__title,
+  &__description,
+  &__user {
+    margin-top: 5px;
+    padding: 8px 12px;
+    width: 100%;
+  }
+}

@@ -1,31 +1,22 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Posts</router-link> |
-    <router-link to="/new">Create Post</router-link> |
-    <!-- <router-link to="/about">About</router-link> -->
+  <div class="l-page">
+    <div class="l-page__navbar c-navbar">
+      <div class="c-navbar__list g--margin-left-auto">
+        <router-link class="c-navbar__link" to="/">Posts</router-link>
+        <router-link class="c-navbar__link" to="/new">Create Post</router-link>
+      </div>
+      <div
+        class="c-navbar__hamburger g--display-none g--display-block@tablet"
+      ></div>
+    </div>
+    <div class="l-page__main">
+      <router-view />
+    </div>
   </div>
-  <router-view/>
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.l-page__navbar a.router-link-exact-active {
+  color: #c53030;
 }
 </style>

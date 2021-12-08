@@ -1,0 +1,25 @@
+.c-panel {
+  min-height: 300px;
+
+  &__header {
+    border-bottom: 1px solid getColor('grey', 5);
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+  }
+  &__main {
+  }
+  &__footer {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+  }
+  &__title {
+    font-size: 25px;
+  }
+  &__content {
+    text-align: start;
+  }
+  &__user {
+    text-align: start;
+  }
+}

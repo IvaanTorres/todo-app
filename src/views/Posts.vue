@@ -1,8 +1,11 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <p>{{loading}}</p>
-    <post-list :posts="posts"/>
+  <div class="c-section">
+    <p class="g--text-align-center">{{ loading }}</p>
+    <post-list
+      class="g--margin-auto"
+      :posts="posts"
+      @deletePost="passEvent($event)"
+    />
   </div>
 </template>
 
@@ -16,7 +19,7 @@ import Post from '@/interfaces/Post';
 import PostList from '@/components/PostList.vue'; // @ is an alias to /src
 
 //! SERVICES
-import {getAll} from '@/services/postServices';
+import { getAll, del } from '@/services/postServices';
 
 export default defineComponent({
   name: 'Posts',
@@ -26,17 +29,36 @@ export default defineComponent({
   data() {
     return {
       loading: 'loading...' as string,
-      posts: [] as Post[]
-    }
+      posts: [] as Post[],
+    };
   },
   methods: {
-    async getPosts(){
-      setTimeout(async () => {
-        const res = await getAll();
-        this.posts = res.data;
-        this.loading = '';
-      }, 250);
-    }
+    async getPosts() {
+      const res = await getAll();
+      this.posts = res.data;
+      this.loading = '';
+    },
+    async deletePost(post: Post) {
+      //!PREGUNTAR
+
+      //!OPCION 1
+      /* const index = this.posts
+        .map((x) => {
+          return x.id;
+        })
+        .indexOf(post.id);
+
+      this.posts.splice(index, 1); */
+
+      //!OPCION 2
+      if (await del(+post.id)) {
+        console.log(post);
+        this.getPosts();
+      }
+    },
+    passEvent(post: Post) {
+      this.deletePost(post);
+    },
   },
   mounted() {
     this.getPosts();
