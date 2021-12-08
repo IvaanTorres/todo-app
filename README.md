@@ -53,6 +53,14 @@ npm run scss
 
 ```
 
+### Starts Json-Server
+
+```
+
+npm run start
+
+```
+
 ### Author
 
 Linkedin: [http://linkedin.com/in/ivan-torres-garcia](http://linkedin.com/in/ivan-torres-garcia)
