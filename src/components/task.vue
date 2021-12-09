@@ -1,18 +1,18 @@
 <template>
-  <div class="c-panel">
+  <div class="c-task">
     <div class="l-hamburger">
-      <div class="c-panel__header">
-        <h1 class="c-panel__title">{{ post.title }}</h1>
-        <p class="c-panel__user">{{ post.user }}</p>
+      <div class="c-task__header">
+        <h1 class="c-task__title">{{ task.title }}</h1>
+        <p class="c-task__user">{{ task.user }}</p>
       </div>
-      <div class="c-panel__main">
-        <p class="c-panel__content">{{ post.body }}</p>
+      <div class="c-task__main">
+        <p class="c-task__content">{{ task.body }}</p>
       </div>
-      <div class="c-panel__footer">
+      <div class="c-task__footer">
         <button
           class="c-button"
-          :data="post"
-          @click="this.$router.push({ path: `/posts/${post.id}` })"
+          :data="task"
+          @click="this.$router.push({ path: `/tasks/${task.id}` })"
         >
           See details
         </button>
@@ -28,13 +28,13 @@
 import { defineComponent, PropType } from 'vue';
 
 //! INTERFACES
-import Post from '@/interfaces/Post';
+import Task from '@/interfaces/Task';
 
 export default defineComponent({
-  name: 'Post',
+  name: 'Task',
   props: {
-    post: {
-      type: Object as PropType<Post>,
+    task: {
+      type: Object as PropType<Task>,
       require: true,
     },
   },
@@ -43,7 +43,7 @@ export default defineComponent({
   },
   methods: {
     passEvent() {
-      this.$emit('deletePost', this.post);
+      this.$emit('deleteTask', this.task);
     },
   },
 });

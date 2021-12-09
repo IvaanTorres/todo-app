@@ -1,10 +1,10 @@
 <template>
   <div class="c-section">
     <p class="g--text-align-center">{{ loading }}</p>
-    <post-list
+    <task-list
       class="g--margin-auto"
-      :posts="posts"
-      @deletePost="passEvent($event)"
+      :tasks="tasks"
+      @deleteTask="passEvent($event)"
     />
   </div>
 </template>
@@ -13,32 +13,32 @@
 import { defineComponent } from 'vue';
 
 //!INTERFACES
-import Post from '@/interfaces/Post';
+import Task from '@/interfaces/Task';
 
 //! COMPONENTS
-import PostList from '@/components/PostList.vue'; // @ is an alias to /src
+import TaskList from '@/components/task-list.vue'; // @ is an alias to /src
 
 //! SERVICES
-import { getAll, del } from '@/services/postServices';
+import { getAll, del } from '@/services/Tasks';
 
 export default defineComponent({
-  name: 'Posts',
+  name: 'Tasks',
   components: {
-    PostList,
+    TaskList,
   },
   data() {
     return {
       loading: 'loading...' as string,
-      posts: [] as Post[],
+      tasks: [] as Task[],
     };
   },
   methods: {
-    async getPosts() {
+    async getTasks() {
       const res = await getAll();
-      this.posts = res.data;
+      this.tasks = res.data;
       this.loading = '';
     },
-    async deletePost(post: Post) {
+    async deleteTask(task: Task) {
       //!PREGUNTAR
 
       //!OPCION 1
@@ -51,17 +51,17 @@ export default defineComponent({
       this.posts.splice(index, 1); */
 
       //!OPCION 2
-      if (await del(+post.id)) {
-        console.log(post);
-        this.getPosts();
+      if (await del(+task.id)) {
+        console.log(task);
+        this.getTasks();
       }
     },
-    passEvent(post: Post) {
-      this.deletePost(post);
+    passEvent(task: Task) {
+      this.deleteTask(task);
     },
   },
   mounted() {
-    this.getPosts();
+    this.getTasks();
   },
 });
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form class="c-form" @submit.prevent="passData">
+    <form class="c-form" @submit.prevent="passData()">
       <div class="c-form__wrapper">
         <div class="c-form__header">
           <label class="c-form__label" for="title">Title:</label><br />
@@ -9,7 +9,7 @@
             type="text"
             name="title"
             placeholder="Type a title"
-            v-model="post.title"
+            v-model="task.title"
           /><br />
 
           <label class="c-form__label" for="body">Description:</label><br />
@@ -19,7 +19,7 @@
             cols="30"
             rows="10"
             placeholder="Type a description"
-            v-model="post.body"
+            v-model="task.body"
           ></textarea>
           <br />
 
@@ -29,7 +29,7 @@
             type="text"
             name="user"
             placeholder="Type your user"
-            v-model="post.user"
+            v-model="task.user"
           /><br />
         </div>
 
@@ -45,22 +45,22 @@
 import { defineComponent, PropType } from 'vue';
 
 //! INTERFACES
-import Post from '@/interfaces/Post';
+import Task from '@/interfaces/Task';
 
 export default defineComponent({
   props: {
     data: {
-      type: Object as PropType<Post>,
+      type: Object as PropType<Task>,
     },
   },
   data() {
     return {
-      post: {} as Post,
+      task: {} as Task,
     };
   },
   methods: {
     passData() {
-      this.$emit('getData', this.post);
+      this.$emit('taskData', this.task);
     },
   },
 });

@@ -2,8 +2,8 @@
   <div class="l-page">
     <div class="l-page__navbar c-navbar">
       <div class="c-navbar__list g--margin-left-auto">
-        <router-link class="c-navbar__link" to="/">Posts</router-link>
-        <router-link class="c-navbar__link" to="/new">Create Post</router-link>
+        <router-link class="c-navbar__link" to="/">Tasks</router-link>
+        <router-link class="c-navbar__link" to="/new">Create Task</router-link>
       </div>
       <div
         class="c-navbar__hamburger g--display-none g--display-block@tablet"

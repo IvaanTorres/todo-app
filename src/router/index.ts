@@ -1,29 +1,29 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Posts from '../views/Posts.vue'
-import newPost from '../views/NewPost.vue'
-import postDetails from '../views/PostDetails.vue'
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import taskList from '../views/task-list.vue';
+import taskNew from '../views/task-new.vue';
+import taskDetails from '../views/task-details.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'Posts',
-    component: Posts
+    name: 'Task list',
+    component: taskList,
   },
   {
     path: '/new',
-    name: 'Create new post',
-    component: newPost
+    name: 'Create new task',
+    component: taskNew,
   },
   {
-    path: '/posts/:id',
-    name: 'Post Details',
-    component: postDetails,
+    path: '/tasks/:id',
+    name: 'Task details',
+    component: taskDetails,
   },
-]
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

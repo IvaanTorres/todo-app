@@ -1,6 +1,6 @@
 <template>
-  <h1 class="g--text-align-center">Post Details</h1>
-  <form class="c-form" @submit.prevent="updatePost()">
+  <h1 class="g--text-align-center">Task Details</h1>
+  <form class="c-form" @submit.prevent="updateTask()">
     <div class="c-form__wrapper">
       <div class="c-form__header">
         <label class="c-form__label" for="title">Title:</label><br />
@@ -9,7 +9,7 @@
           type="text"
           name="title"
           spellcheck="false"
-          v-model="post.title"
+          v-model="task.title"
         />
         <br />
         <label class="c-form__label" for="description">Description:</label
@@ -20,7 +20,7 @@
           cols="30"
           rows="10"
           spellcheck="false"
-          v-model="post.body"
+          v-model="task.body"
         ></textarea>
         <br />
         <label class="c-form__label" for="user">User:</label><br />
@@ -29,7 +29,7 @@
           type="text"
           name="user"
           spellcheck="false"
-          v-model="post.user"
+          v-model="task.user"
         />
         <br />
       </div>
@@ -44,7 +44,7 @@
             class="c-button c-button--alternative"
             type="button"
             value="Delete"
-            @click="deletePost()"
+            @click="deleteTask()"
           />
         </div>
       </div>
@@ -56,37 +56,35 @@
 import { defineComponent } from 'vue';
 
 //! INTERFACES
-import Post from '@/interfaces/Post';
+import Task from '@/interfaces/Task';
 
 //! SERVICES
-import { getById, update, del } from '@/services/postServices';
+import { getById, update, del } from '@/services/Tasks';
 
 export default defineComponent({
   data() {
     return {
-      post: {} as Post,
+      task: {} as Task,
     };
   },
   methods: {
-    async getPost(id: number) {
-      const post = await getById(id);
-      this.post = post.data;
+    async getTask(id: number) {
+      const task = await getById(id);
+      this.task = task.data;
     },
-    async updatePost() {
-      const updatedPost = await update(+this.$route.params.id, this.post);
-      console.log(updatedPost);
+    async updateTask() {
+      await update(+this.$route.params.id, this.task);
       this.$router.push({ path: '/' });
     },
-    async deletePost() {
-      const post = this.post; // Keep post obj to show it in case it's been deleted
+    async deleteTask() {
+      const task = this.task; // Keep post obj to show it in case it's been deleted
       if (await del(+this.$route.params.id)) {
-        console.log(post);
         this.$router.push({ path: '/' });
       }
     },
   },
   mounted() {
-    this.getPost(+this.$route.params.id);
+    this.getTask(+this.$route.params.id);
   },
 });
 </script>
